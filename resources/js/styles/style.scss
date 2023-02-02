@@ -1,0 +1,20 @@
+// If you want to override variables do it here
+@import "variables";
+
+$enable-ltr: true;
+$enable-rtl: true;
+
+// Import styles
+@import "../../../node_modules/@coreui/coreui/scss/coreui";
+
+// Import Chart.js Tooltips
+@import "../../../node_modules/@coreui/chartjs/scss/tooltips";
+
+@import "layout";
+@import "example";
+
+// If you want to add something do it here
+@import "custom";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
