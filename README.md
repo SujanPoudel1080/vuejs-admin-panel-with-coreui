@@ -2,4 +2,5 @@ This repository provides a boilerplate for admin panel for projects using vue js
 
 For setting up the project
 - Clone the repository
-```console git clone https://github.com/SujanPoudel1080/vuejs-admin-panel-with-coreui.git
+```console 
+git clone https://github.com/SujanPoudel1080/vuejs-admin-panel-with-coreui.git
