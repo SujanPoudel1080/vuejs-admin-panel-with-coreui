@@ -48,34 +48,31 @@
     </div>
 </template>
 
-<script>
+<script setup>
 import { CButton, CCardFooter, CCardHeader, CTable } from "@coreui/vue";
+import { useToast } from "vue-toastification";
 import axios from "axios";
+import { ref, onMounted } from "vue";
 
+const users = ref([]);
+const errors = ref([]);
+const toast = useToast()
 
-export default {
-    name: "users",
-    data() {
-        return {
-            users: [],
-        };
-    },
-    mounted() {
-        this.getData();
-    },
-    methods: {
-        async getData() {
-            await axios
-                .get("users/")
-                .then((response) => {
-                    this.users = response.data.users || [];
-                })
-                .catch((error) => {
-                    this.users = [];
-                });
-        },
+onMounted(() => {
+    getData();
+});
 
-
-    },
+const getData = async () => {
+    errors.value = [];
+    users.value = []
+    await axios
+        .get("users/")
+        .then((response) => {
+            users.value = response.data.users || [];
+        })
+        .catch((err) => {
+            errors.value = err.response.data.errors || {};
+            toast.warning("something error occured!");
+        });
 };
 </script>
